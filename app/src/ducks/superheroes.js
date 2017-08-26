@@ -3,8 +3,9 @@ const ADD_HERO = 'ADD_HERO';
 export default function reducer(state, action) {
     switch(action.type) {
         case ADD_HERO:
+        const hero = Object.assign({}, action.payload)
         return {
-            heros: Object.assign({}, state.heroes, action.payload )
+            heroes: [...state.heroes, hero]
         }
         default:
             return state;
