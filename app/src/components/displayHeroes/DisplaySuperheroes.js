@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 
 class DisplaySuperheroes extends Component {
     render() {
+        console.log(this.props.heroes)
     
         const heroes = this.props.heroes.map((hero , i) => {
             return (
             <div key={i}>
-                <h4>{ hero }</h4>
+                <h4>{ hero.name }</h4>
+                <h6>{ hero.power }</h6>
             </div>
             )
         })
