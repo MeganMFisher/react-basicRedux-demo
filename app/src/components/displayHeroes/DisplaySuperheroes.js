@@ -16,7 +16,7 @@ class DisplaySuperheroes extends Component {
 
         this.showModal = this.showModal.bind(this);
         this.hideModal = this.hideModal.bind(this);
-        this.editName = this.editName.bind;
+        this.editName = this.editName.bind(this);
         this.editPower = this.editPower.bind(this);
         this.updateHeroName = this.updateHeroName.bind(this);
     }
@@ -49,12 +49,12 @@ class DisplaySuperheroes extends Component {
     }
 
     updateHeroName() {
-        this.props.updateHero(this.state.heroToEdit, this.state.index);
+        this.props.updateHero(this.state.heroToEdit, this.state.powerToEdit, this.state.index);
         this.hideModal();
       }
 
     render() {
-    
+    console.log(this.props.heroes)
         const heroes = this.props.heroes.map((hero , i) => {
             return (
             <div key={i}>
@@ -63,7 +63,7 @@ class DisplaySuperheroes extends Component {
                 <button
                       onClick={()=>this.showModal( hero.name, hero.power, i)}
                       >Edit</button>
-                <button onClick={()=> this.props.removeHero(i)}>Remove</button>
+                <button onClick={()=>                     this.props.removeHero(i)}           >Remove</button>
             </div>
             )
         })

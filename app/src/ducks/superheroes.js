@@ -11,12 +11,16 @@ export default function reducer(state, action) {
             return Object.assign({}, state, {heroes: state.heroes.filter((hero, i) => i !== action.payload)});
 
         case UPDATE_HERO:
-            return {
-              heroes: state.heroes.map((name, i) => {
-                if (action.payload.index === i) return action.payload.name;
-                return name;
+        
+            return Object.assign({}, state, {heroes: state.heroes.map((hero, i) => {
+                if(action.payload.index === i) {
+                    hero.name = action.payload.name;
+                    hero.power = action.payload.power
+                    return hero
+                }
+                return hero
               })
-            } 
+            })
 
         default:
             return state;
@@ -38,11 +42,12 @@ export function removeHero(i) {
     }
 }
 
-export function updateHero(name, index) {
+export function updateHero(name, power, index) {
     return {
       type: UPDATE_HERO,
       payload: {
         name: name, 
+        power: power,
         index: index
       }
     }
