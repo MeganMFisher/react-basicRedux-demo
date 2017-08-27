@@ -4,7 +4,6 @@ import { removeHero } from '../../ducks/superheroes';
 
 class DisplaySuperheroes extends Component {
 
-
     render() {
     
         const heroes = this.props.heroes.map((hero , i) => {
