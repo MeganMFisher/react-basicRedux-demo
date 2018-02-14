@@ -1,7 +1,11 @@
 const ADD_HERO = 'ADD_HERO';
 const REMOVE_HERO = 'REMOVE_HERO';
 
-export default function reducer(state, action) {
+const initialState = {
+    heroes: [{ name: 'Wonder Woman', power: 'immortal'}, { name: 'Cat Woman', power: 'Cat like reflexes'}, { name: 'Super Girl', power: 'x-ray vision'}]
+}
+
+export default function reducer(state = initialState, action) {
     switch(action.type) {
         case ADD_HERO:
             return Object.assign({}, state, {heroes: [...state.heroes, action.payload]});
