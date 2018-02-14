@@ -9,11 +9,21 @@ test('should be defined', () => {
 test('reducer ADD_HERO case to return correct state', () => {
 
     const initialState = {
-        heroes: [{ name: 'Wonder Woman', power: 'immortal'}, { name: 'Cat Woman', power: 'Cat like reflexes'}, { name: 'Super Girl', power: 'x-ray vision'}]
+        heroes: [{ name: 'Cat Woman', power: 'Cat like reflexes'}, { name: 'Super Girl', power: 'x-ray vision'}]
     }
 
-    expect(reducer(initialState, {"payload": { name: 'Wonder Woman', power: 'immortal'}, "type": "ADD_HERO"})).toEqual({"heroes": [{"name": "Wonder Woman", "power": "immortal"}, {"name": "Cat Woman", "power": "Cat like reflexes"}, {"name": "Super Girl", "power": "x-ray vision"}, {"name": "Wonder Woman", "power": "immortal"}]})
+    expect(reducer(initialState, {"payload": { name: 'Wonder Woman', power: 'immortal'}, "type": "ADD_HERO"})).toEqual({"heroes": [{"name": "Cat Woman", "power": "Cat like reflexes"}, {"name": "Super Girl", "power": "x-ray vision"}, {"name": "Wonder Woman", "power": "immortal"}]})
 })
+
+
+test('reducer REMOVE_HERO case to return correct state', () => {
+    
+        const initialState = {
+            heroes: [{ name: 'Wonder Woman', power: 'immortal'}, { name: 'Cat Woman', power: 'Cat like reflexes'}, { name: 'Super Girl', power: 'x-ray vision'}]
+        }
+    
+        expect(reducer(initialState, {"payload": 0, "type": "REMOVE_HERO"})).toEqual({"heroes": [ {"name": "Cat Woman", "power": "Cat like reflexes"}, {"name": "Super Girl", "power": "x-ray vision"}]})
+    })
 
 
 test('addHero should return an object', () => {
